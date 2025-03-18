@@ -7,7 +7,7 @@ export const getData = async ({ baseUrl, url, params = {} }) => {
   } catch (error) {
     return {
       success: false,
-      error: error.response ? error.response.data : "Error",
+      message: error?.response?.data?.error?.message ?? "Error",
     };
   }
 };

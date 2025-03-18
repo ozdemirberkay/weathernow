@@ -4,6 +4,7 @@ import Input from "../component/input";
 import { getWeatherFromName } from "../service/weatherService";
 import cities from "../shared/city";
 import ClipLoader from "react-spinners/ClipLoader";
+import WeatherCard from "../component/weather_card";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -50,12 +51,13 @@ export default function Home() {
         ))}
       </div>
 
+      <div className="divider"></div>
+
       {loading && <ClipLoader color="#faf3e0" size={50} />}
 
-      {result && result.success && (
-        <div className="p-2 bg-gray-100 rounded-md">
-          <pre>{JSON.stringify(result, null, 2)}</pre>
-        </div>
+      {result && result.success && <WeatherCard data={result} />}
+      {result && !result.success && (
+        <div className="error-message">{`${result.message}`}</div>
       )}
     </div>
   );

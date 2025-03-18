@@ -91,3 +91,35 @@
   background-color: #faf3e0;
   margin: 10px 10px;
 }
+
+.weather-card {
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #14213d;
+  border: 2px solid #faf3e0;
+  color: #faf3e0;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.temperature {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.weather-details {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.error-message {
+  color: red;
+  font-size: 20px;
+  font-weight: bold;
+}
