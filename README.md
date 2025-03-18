@@ -3,6 +3,8 @@
 
 Weathernow is a weather application built with React. Just enter a city name and get instant weather!
 
+<img src="https://github.com/user-attachments/assets/41770572-d026-4d2a-9ac3-32bad7793bec" width="850" />
+
 ## Installation & Setup 🔧
 1. Clone the repository
    ```sh
