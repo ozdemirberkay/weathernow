@@ -1,7 +1,7 @@
 import { getData } from "./webService";
 
 const WEATHER_BASE_URL = "http://api.weatherapi.com";
-const API_KEY = "API_KEY";
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 export const getWeatherFromName = async ({ query }) => {
   const result = await getData({
