@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <div className="Home">
-      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+      <div className="search-bar">
         <Input
           onQueryChange={setQuery}
           value={query}

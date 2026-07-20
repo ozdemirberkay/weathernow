@@ -3,123 +3,203 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  color: #faf3e0;
 }
 
 .App-header {
   background-color: #faf3e0;
+  color: #14213d;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #14213d;
+  padding: 16px;
+}
+
+.App-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.5px;
 }
 
 .App-footer {
-  background-color: #14213d;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   color: #faf3e0;
   margin-top: auto;
+  padding: 16px;
+  font-size: 0.85rem;
+  opacity: 0.7;
 }
 
 .Home {
   display: flex;
   flex: 1;
-  align-items: center;
   flex-direction: column;
-  padding: 6px;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 28px 16px;
+  box-sizing: border-box;
 }
 
-.button {
-  background: #faf3e0;
-  border: 1px solid #faf3e0;
-  border-radius: 6px;
-  color: #14213d;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 16px;
-  min-height: 40px;
-  padding: 12px 14px;
-  text-align: center;
+/* --- search bar --- */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
 }
 
-.button:hover,
-.button:active {
-  background-color: #14213d;
-  color: #faf3e0;
-}
-
-.button:active {
-  opacity: 0.5;
+.search-bar > div {
+  flex: 1;
 }
 
 .input {
-  width: 100vh;
+  width: 100%;
+  box-sizing: border-box;
   border: 1px solid #faf3e0;
   background: #14213d;
-  position: relative;
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 12px 14px;
   color: #faf3e0;
   font-size: 16px;
+  outline: none;
 }
 
-.input:hover {
-  box-shadow: #faf3e0 0 0 0 2px;
+.input::placeholder {
+  color: rgba(250, 243, 224, 0.5);
+}
+
+.input:focus {
+  box-shadow: 0 0 0 2px #faf3e0;
+}
+
+/* --- primary button --- */
+.button {
+  background: #faf3e0;
+  border: 1px solid #faf3e0;
+  border-radius: 8px;
+  color: #14213d;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 44px;
+  padding: 0 18px;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.button:hover {
+  background: #14213d;
   color: #faf3e0;
 }
-.input:focus {
-  background: #faf3e0;
-  color: #14213d;
+
+.button:active {
+  opacity: 0.6;
 }
 
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- city chips (secondary, outlined) --- */
 .cities-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 2px;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
 }
 
 .city-item {
-  margin: 2px 2px;
+  margin: 0;
 }
 
-.divider {
-  height: 3px;
-  width: 100%;
-  background-color: #faf3e0;
-  margin: 10px 10px;
-}
-
-.weather-card {
-  padding: 16px;
-  border-radius: 12px;
-  background-color: #14213d;
-  border: 2px solid #faf3e0;
+.cities-container .button {
+  background: transparent;
   color: #faf3e0;
+  border: 1px solid rgba(250, 243, 224, 0.35);
+  border-radius: 999px;
+  min-height: 0;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.cities-container .button:hover {
+  background: #faf3e0;
+  color: #14213d;
+  border-color: #faf3e0;
+}
+
+/* --- divider (subtle hairline) --- */
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: rgba(250, 243, 224, 0.15);
+  margin: 0;
+}
+
+/* --- weather card --- */
+.weather-card {
+  padding: 20px 24px;
+  border-radius: 14px;
+  background-color: rgba(250, 243, 224, 0.05);
+  border: 1px solid rgba(250, 243, 224, 0.3);
+  color: #faf3e0;
+  text-align: center;
+  min-width: 260px;
+}
+
+.weather-card h2 {
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+}
+
+.weather-card > p {
+  margin: 0;
+  opacity: 0.7;
+  font-size: 0.9rem;
 }
 
 .icon-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-top: 8px;
+}
+
+.icon-container p {
+  margin: 0;
 }
 
 .temperature {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 2.4rem;
+  font-weight: 700;
   text-align: center;
-  margin-top: 8px;
+  margin: 4px 0;
 }
 
 .weather-details {
-  text-align: center;
+  display: grid;
+  gap: 6px;
+  text-align: left;
   margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(250, 243, 224, 0.15);
+}
+
+.weather-details p {
+  margin: 0;
+  font-size: 0.95rem;
 }
 
 .error-message {
-  color: red;
-  font-size: 20px;
-  font-weight: bold;
+  color: #ff6b6b;
+  font-size: 1rem;
+  font-weight: 600;
 }
