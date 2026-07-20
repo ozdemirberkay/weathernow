@@ -3,8 +3,9 @@ import Button from "../component/button";
 import Input from "../component/input";
 import { getWeatherFromName } from "../service/weatherService";
 import cities from "../shared/city";
-import ClipLoader from "react-spinners/ClipLoader";
 import WeatherCard from "../component/weather_card";
+import WeatherCardSkeleton from "../component/weather_card_skeleton";
+import ErrorState from "../component/error_state";
 
 export default function Home() {
   const [query, setQuery] = useState("");
@@ -12,12 +13,19 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
 
   const handleSearch = async () => {
-    if (!query) {
-      setResult({ success: false, message: "Query is empty!" });
+    const trimmed = query.trim();
+    if (!trimmed) {
+      setResult({
+        success: false,
+        errorType: "empty",
+        message: "Please enter a city name to search.",
+      });
+      return;
     }
 
+    setResult(null);
     setLoading(true);
-    const response = await getWeatherFromName({ query: query });
+    const response = await getWeatherFromName({ query: trimmed });
     setLoading(false);
 
     setResult(response);
@@ -54,11 +62,15 @@ export default function Home() {
 
       <div className="divider"></div>
 
-      {loading && <ClipLoader color="#faf3e0" size={50} />}
+      {loading && <WeatherCardSkeleton />}
 
-      {result && result.success && <WeatherCard data={result} />}
-      {result && !result.success && (
-        <div className="error-message">{`${result.message}`}</div>
+      {!loading && result && result.success && <WeatherCard data={result} />}
+      {!loading && result && !result.success && (
+        <ErrorState
+          variant={result.errorType}
+          message={result.message}
+          onRetry={result.errorType === "empty" ? undefined : handleSearch}
+        />
       )}
     </div>
   );
