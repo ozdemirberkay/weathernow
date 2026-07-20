@@ -30,6 +30,7 @@ export default function Home() {
           onQueryChange={setQuery}
           value={query}
           placeholder="Search City"
+          onEnter={handleSearch}
         />
         <Button
           onClick={handleSearch}

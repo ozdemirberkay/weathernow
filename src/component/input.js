@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ onQueryChange, value, placeholder }) => {
+const Input = ({ onQueryChange, value, placeholder, onEnter }) => {
   return (
     <div>
       <input
@@ -8,6 +8,11 @@ const Input = ({ onQueryChange, value, placeholder }) => {
         placeholder={placeholder}
         value={value}
         onChange={(e) => onQueryChange(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onEnter?.();
+          }
+        }}
         className="input"
       />
     </div>
