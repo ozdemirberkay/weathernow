@@ -18,15 +18,11 @@ Weathernow is a weather application built with React. Just enter a city name and
    ```sh
    npm install
    ```
-4. Open the weather service file and update the API key constant like this
-(You can get your API key from [WeatherAPI](https://www.weatherapi.com/))
-   ```js
-   const API_KEY = "your_api_key_here";  // Replace with your actual API key
+4. Get a free API key from [WeatherAPI](https://www.weatherapi.com/), then open the `.env` file and replace the placeholder with your key
+   ```sh
+   REACT_APP_WEATHER_API_KEY=your_api_key_here
    ```
 5. Start the application
    ```sh
    npm start
    ```
-
-
-
