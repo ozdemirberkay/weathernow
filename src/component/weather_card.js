@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 const WeatherCard = ({ data }) => {
+  const [unit, setUnit] = useState("c");
+
   if (!data || !data.success) return <p>Veri bulunamadı</p>;
 
   const { location, current } = data.data;
+
+  const isC = unit === "c";
+  const symbol = isC ? "°C" : "°F";
+  const temp = isC ? current.temp_c : current.temp_f;
+  const feelslike = isC ? current.feelslike_c : current.feelslike_f;
 
   return (
     <div className="weather-card">
@@ -18,14 +25,34 @@ const WeatherCard = ({ data }) => {
         />
         <p>{current.condition.text}</p>
       </div>
-      <p className="temperature">{current.temp_c}°C</p>
+      <p className="temperature">
+        {temp}
+        {symbol}
+      </p>
+      <div className="unit-toggle">
+        <button
+          className={`unit-btn ${isC ? "active" : ""}`}
+          onClick={() => setUnit("c")}
+        >
+          °C
+        </button>
+        <button
+          className={`unit-btn ${!isC ? "active" : ""}`}
+          onClick={() => setUnit("f")}
+        >
+          °F
+        </button>
+      </div>
       <div className="weather-details">
         <p>Humidity: {current.humidity}%</p>
         <p>
           Wind: {current.wind_kph} km/h ({current.wind_dir})
         </p>
         <p>Pressure: {current.pressure_mb} mb</p>
-        <p>Feelslike: {current.feelslike_c}°C</p>
+        <p>
+          Feelslike: {feelslike}
+          {symbol}
+        </p>
       </div>
     </div>
   );
